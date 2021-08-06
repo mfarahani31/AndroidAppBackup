@@ -1,13 +1,13 @@
-package ir.sharif.sharifict;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SharifIctApplication {
+public class AndroidAppBackup {
 
     public static void main(String[] args) {
-        SpringApplication.run(SharifIctApplication.class, args);
+        SpringApplication.run(AndroidAppBackup.class, args);
     }
 
 
