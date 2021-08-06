@@ -1,13 +1,14 @@
-package ir.sharif.sharifict.service;
+package com.example.service;
 
-import ir.sharif.sharifict.exception.FileStorageException;
-import ir.sharif.sharifict.exception.MyFileNotFoundException;
-import ir.sharif.sharifict.model.AndroidApp;
-import ir.sharif.sharifict.repository.AndroidAppRepository;
+import com.example.exception.FileStorageException;
+import com.example.exception.MyFileNotFoundException;
+import com.example.model.AndroidApp;
+import com.example.repository.AndroidAppRepository;
 import net.dongliu.apk.parser.ApkFile;
 import net.dongliu.apk.parser.bean.ApkMeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 @Service
 public class AndroidAppService {
@@ -32,8 +33,8 @@ public class AndroidAppService {
 
     public AndroidApp storeFile(MultipartFile file) {
         // Normalize file name
-        var fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        ApkMeta apkMeta = null;
+        var fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        ApkMeta apkMeta;
         try {
             // Check if the file's name contains invalid characters
             if (fileName.contains("..")) {

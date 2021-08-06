@@ -1,6 +1,6 @@
-package ir.sharif.sharifict.repository;
+package com.example.repository;
 
-import ir.sharif.sharifict.model.AndroidApp;
+import com.example.model.AndroidApp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

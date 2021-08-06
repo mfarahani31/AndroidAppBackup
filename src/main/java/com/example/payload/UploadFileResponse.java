@@ -1,4 +1,4 @@
-package ir.sharif.sharifict.payload;
+package com.example.payload;
 
 
 import lombok.AllArgsConstructor;

@@ -1,8 +1,7 @@
-package ir.sharif.sharifict.controller;
+package com.example.controller;
 
-import ir.sharif.sharifict.model.AndroidApp;
-import ir.sharif.sharifict.payload.UploadFileResponse;
-import ir.sharif.sharifict.service.AndroidAppService;
+import com.example.model.AndroidApp;
+import com.example.service.AndroidAppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
