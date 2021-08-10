@@ -8,10 +8,10 @@
         <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>ir.sharif</groupId>
-    <artifactId>SharifIct</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>AndroidAppBackup</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SharifIct</name>
+    <name>AndroidAppBackup</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>net.dongliu</groupId>
             <artifactId>apk-parser</artifactId>
-            <version>2.5.3</version>
+            <version>2.6.10</version>
         </dependency>
 
         <dependency>
@@ -64,6 +64,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
 

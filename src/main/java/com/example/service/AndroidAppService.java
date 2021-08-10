@@ -8,7 +8,6 @@ import net.dongliu.apk.parser.ApkFile;
 import net.dongliu.apk.parser.bean.ApkMeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
@@ -28,8 +26,10 @@ public class AndroidAppService {
     public AndroidAppService(AndroidAppRepository androidAppRepository) {
         this.androidAppRepository = androidAppRepository;
     }
+
     @Value("${app.upload.dir:${user.home}}")
     public String uploadDir;
+
 
     public AndroidApp storeFile(MultipartFile file) {
         // Normalize file name
@@ -40,6 +40,7 @@ public class AndroidAppService {
             if (fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
+
             var copyLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
 
             Files.copy(file.getInputStream(), copyLocation);
@@ -48,7 +49,6 @@ public class AndroidAppService {
                     Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename())).toString())) {
                 apkMeta = apkFile.getApkMeta();
             }
-            Files.copy(file.getInputStream(), Path.of(apkMeta.getVersionCode().toString() + copyLocation));
 
             var androidApp = new AndroidApp(
                     fileName,
